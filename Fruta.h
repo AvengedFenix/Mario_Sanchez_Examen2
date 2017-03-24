@@ -1,7 +1,7 @@
 #pragma once
 
 class Fruta {
-private:
+protected:
     string nombre;
 
 public:

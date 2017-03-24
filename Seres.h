@@ -1,7 +1,7 @@
 #pragma once
 
 class Seres {
-private:
+protected:
     string raza;
     int edad;
     string nombre;
