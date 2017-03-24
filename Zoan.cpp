@@ -1,5 +1,7 @@
 #include "Zoan.h"
 
+using namespace std;
+
 Zoan::Zoan(){
 
 }

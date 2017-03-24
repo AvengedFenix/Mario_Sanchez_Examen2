@@ -1,6 +1,8 @@
 #pragma once
 #include "Seres.h"
 
+using namespace std;
+
 class Piratas : public Seres{
 private:
     string oceano;

@@ -1,6 +1,8 @@
 #pragma once
 #include "Seres.h"
 
+using namespace std;
+
 class Revolucionarios : public Seres{
 private:
     string fecha;

@@ -1,6 +1,8 @@
 #pragma once
 #include "Fruta.h"
 
+using namespace std;
+
 class Logia {
 private:
     string elemento;
