@@ -1,17 +1,18 @@
 #pragma once
+#include <string>
 #include "Fruta.h"
 
-class Zoan {
+class Zoan : public Fruta{
 private:
-    stirng tipo;
+    string tipo;
     string animal;
 
 public:
-    Zoan ();
+    Zoan();
     Zoan(string,string,string);
-    void setTipo();
+    void setTipo(string);
     string getTipo();
-    void setAnimal();
+    void setAnimal(string);
     string getAnimal();
-    ~Zoan ();
+    ~Zoan();
 };

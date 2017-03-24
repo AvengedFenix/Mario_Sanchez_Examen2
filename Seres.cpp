@@ -4,7 +4,7 @@ Seres::Seres(){
 
 }
 
-Seres::Seres(string raza, int edad, string nombre, Fruta f, bool hObs, bool hArma, bool, hRey){
+Seres::Seres(string raza, int edad, string nombre, Fruta f, bool hObs, bool hArma, bool hRey){
     this->raza = raza;
     this->edad =edad;
     this->nombre = nombre;
@@ -14,7 +14,7 @@ Seres::Seres(string raza, int edad, string nombre, Fruta f, bool hObs, bool hArm
     this->hRey = hRey;
 }
 
-Seres::Seres(string raza, int edad, string nombre, bool hObs, bool hArma, bool, hRey){
+Seres::Seres(string raza, int edad, string nombre, bool hObs, bool hArma, bool hRey){
     this->raza = raza;
     this->edad =edad;
     this->nombre = nombre;
@@ -31,11 +31,11 @@ string Seres::getRaza() {
     return this->raza;
 }
 
-void Seres::setEdad(string edad) {
+void Seres::setEdad(int edad) {
     this->edad =edad;
 }
 
-string Seres::getEdad() {
+int Seres::getEdad() {
     return this->edad;
 }
 

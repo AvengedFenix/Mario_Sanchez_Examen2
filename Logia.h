@@ -1,9 +1,11 @@
 #pragma once
+#include <string>
 #include "Fruta.h"
+
 
 using namespace std;
 
-class Logia {
+class Logia : public Fruta{
 private:
     string elemento;
 

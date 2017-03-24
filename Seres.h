@@ -1,4 +1,6 @@
 #pragma once
+#include <string>
+#include "Fruta.h"
 
 using namespace std;
 
@@ -18,8 +20,8 @@ public:
     Seres(string, int, string,bool,bool,bool);
     void setRaza(string);
     string getRaza();
-    void setEdad(string);
-    string getEdad();
+    void setEdad(int);
+    int getEdad();
     void setNombre(string);
     string getNombre();
     void setF(Fruta);

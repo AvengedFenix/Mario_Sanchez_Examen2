@@ -27,3 +27,7 @@ void Zoan::setAnimal(string animal) {
 string Zoan::getAnimal() {
     return this->animal;
 }
+
+Zoan::~Zoan(){
+    
+}

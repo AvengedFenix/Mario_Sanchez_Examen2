@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 #include "Seres.h"
 
 using namespace std;

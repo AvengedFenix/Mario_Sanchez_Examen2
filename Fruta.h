@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 
 using namespace std;
 
@@ -9,7 +10,7 @@ protected:
 public:
     Fruta ();
     Fruta(string);
-    void setNomrbe(string);
+    void setNombre(string);
     string getNombre();
     virtual ~Fruta ();
 };

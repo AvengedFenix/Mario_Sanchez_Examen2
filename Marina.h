@@ -1,9 +1,10 @@
 #pragma once
+#include <string>
 #include "Seres.h"
 
 using namespace std;
 
-class Marina : public Marina{
+class Marina : public Seres{
 private:
     string fecha;
     string rango;
