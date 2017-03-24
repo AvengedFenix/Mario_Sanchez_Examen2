@@ -7,6 +7,8 @@
 #include "Seres.h"
 #include "Zoan.h"
 #include <vector>
+#include <sstream>
+#include <typeinfo>
 
 using namespace std;
 
@@ -50,7 +52,7 @@ vector agregar(vector<Seres*> s, vector<Frutas*> f) {
                     fs = 'n';
                 } else{
                     for (int i = 0; i < f.size(); i++) {
-                        std::cout << i<<". " << f[i].getNombre()<<endl;
+                        std::cout << i<<". " << f[i]->getNombre()<<endl;
                     }// fin for
                     int pos;
                     std::cin >> pos;
@@ -107,9 +109,9 @@ vector agregar(vector<Seres*> s, vector<Frutas*> f) {
                     std::cout << "Funcion" << endl;
                     std::cin >> funcion;
                     if (fs == 's' || fs == 'S') {
-                        s.push_back(new Marina("Marina",edad,nombre,fruta,hObs,hArma,hRey,oceano,tripulacion,funcion));
+                        s.push_back(new Marina("Piratas",edad,nombre,fruta,hObs,hArma,hRey,oceano,tripulacion,funcion));
                     } else{
-                        s.push_back(new Marina("Marina",edad,nombre,hObs,hArma,hRey,oceano,tripulacion,funcion));
+                        s.push_back(new Marina("Piratas",edad,nombre,hObs,hArma,hRey,oceano,tripulacion,funcion));
                     }
                     break;
                 }// fin case 1.2
@@ -118,13 +120,14 @@ vector agregar(vector<Seres*> s, vector<Frutas*> f) {
                     std::cout << "Fecha" << endl;
                     std::cin >> Fecha;
                     if (fs == 's' || fs == 'S') {
-                        s.push_back(new Marina("Marina",edad,nombre,fruta,hObs,hArma,hRey,fecha));
+                        s.push_back(new Marina("Revolucionarios",edad,nombre,fruta,hObs,hArma,hRey,fecha));
                     } else{
-                        s.push_back(new Marina("Marina",edad,nombre,hObs,hArma,hRey,fecha));
+                        s.push_back(new Marina("Revolucionarios",edad,nombre,hObs,hArma,hRey,fecha));
                     }
                     break;
                 }//fin case 1.3
             }//fin switch 1.1
+            crearLogSeres(*s.back())
             return s;
             break;
         }//fin case 1
@@ -163,26 +166,39 @@ vector agregar(vector<Seres*> s, vector<Frutas*> f) {
     }//fin switch
 }// fin funcio agregar
 
-void crearLogVendedor(Seres*){
+void crearLogSeres(Seres* ser){
   ofstream outfile;
   char filename[256] = {0};
-  time_t currentTime = time(0);
-  tm* currentDate = localtime(&currentTime);
+  t
   try{
     const int directorio = system("mkdir -p ./Usuarios_log");//-p es para crear directorio solo si no existe
   } catch (...) {
 
   }
 
-  strcpy(filename, "./Usuarios_log/");
-  strcat(filename, fmt("%s_%d-%d-%d.log",
-         usuario -> getNombre().c_str(),
-         currentDate->tm_mday, currentDate->tm_mon+1,
-         currentDate->tm_year+1900).c_str());
+  strcpy(filename, "./Usuarios_log/nombre.log");
   stringstream ss;
+  stringstream ss2;
 
-  ss << "\t\tGameHub\n\nNombre: " << usuario -> getNombre() << "\nHora entrada: " << usuario -> getHoraEntrada() << "\nHora salida: "
-  << usuario -> getHoraSalida() << "\n\nCantidad de articulos vendidos: " << cantidadarticulos << "\nDinero generado: " << dinero << "\n-----------------------\n";
+  if (typeid(ser -> getFruta()).name() == typeid(Parmecia).name()) {
+      ss2 << " Nombre Fruta: " << ser -> getFruta() -> getNombre() << " Descripcion: " << ser -> getFruta() -> getDescripcion();
+  } else if (typeid(ser -> getFruta()).name() == typeid(Logia).name()) {
+      ss2 << " Nombre Fruta: " << ser -> getFruta() -> getNombre() << " Elemento: " << ser -> getFruta() -> getElemento();
+  } else if (typeid(ser -> getFruta()).name() == typeid(Logia).name()) {
+      ss2 << " Nombre Fruta: " << ser -> getFruta() -> getNombre() << " Tipo: " << ser -> getFruta() -> getTipo() << " Animal: " << ser -> getFruta() -> getAnimal();
+  }
+
+  if (s -> getRaza() == "Marina") {
+      ss << "Raza: " << s -> getRaza() << " Edad: " << s -> getEdad() << " Nombre: "
+      << ser-> getNombre() << " Fruta " << ss2.str() << " Haki Obs " << ser -> getHObs() << " Haki Armadu " << ser -> getHArma() << " Haki  del Rey: " << ser ->getHRey() << " Fecha Ingreso: " << ser ->getFecha() << " Rango: "<< ser->getRango();
+  } else if (s -> getRaza() == "Piratas") {
+      ss << "Raza: " << s -> getRaza() << " Edad: " << s -> getEdad() << " Nombre: "
+      << ser-> getNombre() << " Fruta " << ss2.str() << " Haki Obs " << ser -> getHObs() << " Haki Armadu " << ser -> getHArma() << " Haki  del Rey: " << ser ->getHRey() << " Oceano: " << ser ->getOceano() << " Tripulacion: "<< ser->getTripulacion() << " Funcion: " << ser ->getFuncion();
+  } else if ( -> getRaza() == "Revolucionarios")) {
+      ss << "Raza: " << s -> getRaza() << " Edad: " << s -> getEdad() << " Nombre: "
+      << ser-> getNombre() << " Fruta " << ss2.str() << " Haki Obs " << ser -> getHObs() << " Haki Armadu " << ser -> getHArma() << " Haki  del Rey: " << ser ->getHRey() << " Fecha Ingreso: " << ser ->getFecha();
+  }
+
 
   outfile.open(filename, std::ios::app); //si no quiero append, solo le borro el std::ios::app
   outfile << ss.str();
