@@ -1,4 +1,5 @@
 #pragma once
+#include "Seres.h"
 
 class Marina : public Marina{
 private:
@@ -13,5 +14,5 @@ public:
     string getFecha();
     void setRango(string);
     string getRango();
-    virtual ~Marina ();
+    ~Marina ();
 };
