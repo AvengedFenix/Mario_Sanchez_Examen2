@@ -13,6 +13,7 @@ private:
 public:
     Seres ();
     Seres(string, int, string,Fruta,bool,bool,bool);
+    Seres(string, int, string,bool,bool,bool);
     void setRaza(string);
     string getRaza();
     void setEdad(string);
@@ -27,5 +28,5 @@ public:
     bool getHArma();
     void setHRey(bool);
     bool getHRey();
-    ~Seres ();
+    ~Seres();
 };

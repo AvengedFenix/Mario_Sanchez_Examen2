@@ -4,6 +4,25 @@ Seres::Seres(){
 
 }
 
+Seres::Seres(string raza, int edad, string nombre, Fruta f, bool hObs, bool hArma, bool, hRey){
+    this->raza = raza;
+    this->edad =edad;
+    this->nombre = nombre;
+    this->f = f;
+    this->hObs = hObs;
+    this->hArma = hArma;
+    this->hRey = hRey;
+}
+
+Seres::Seres(string raza, int edad, string nombre, bool hObs, bool hArma, bool, hRey){
+    this->raza = raza;
+    this->edad =edad;
+    this->nombre = nombre;
+    this->hObs = hObs;
+    this->hArma = hArma;
+    this->hRey = hRey;
+}
+
 void Seres::setRaza(string raza) {
     this->raza = raza;
 }
