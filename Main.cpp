@@ -33,7 +33,7 @@ int main(int argc, char const *argv[]) {
     return 0;
 }
 
-void agregar(vector<Seres*> &s, vector<Fruta*> &f) {
+void agregar(vector<Seres*> s, vector<Fruta*> f) {
     int pos;
     string raza;
     int edad;

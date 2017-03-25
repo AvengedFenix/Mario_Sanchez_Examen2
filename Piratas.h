@@ -20,5 +20,5 @@ public:
     string getTripulacion();
     void setFuncion(string);
     string getFuncion();
-    ~Piratas ();
+    virtual ~Piratas ();
 };

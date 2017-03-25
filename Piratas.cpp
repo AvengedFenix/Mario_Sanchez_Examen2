@@ -51,6 +51,6 @@ string Piratas::getFuncion(){
     return this->funcion;
 }
 
-Piratas::Piratas(){
+Piratas::~Piratas(){
 
 }
