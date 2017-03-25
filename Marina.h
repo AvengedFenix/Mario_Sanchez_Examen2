@@ -11,7 +11,7 @@ private:
 
 public:
     Marina();
-    Marina(string, int, string,Fruta,bool,bool,bool,string, string);
+    Marina(string, int, string,Fruta*,bool,bool,bool,string, string);
     Marina(string, int, string,bool,bool,bool,string, string);
     void setFecha(string);
     string getFecha();

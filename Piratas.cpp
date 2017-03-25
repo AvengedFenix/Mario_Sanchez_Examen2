@@ -1,7 +1,7 @@
 #include "Seres.h"
 #include "Piratas.h"
 
-Piratas::Piratas(string raza, int edad, string nombre ,Fruta f ,bool hObs,bool hArma, bool hRey ,string oceano, string tripulacion, string funcion) : Seres(raza, edad, nombre, f, hObs, hArma, hRey){
+Piratas::Piratas(string raza, int edad, string nombre ,Fruta* f ,bool hObs,bool hArma, bool hRey ,string oceano, string tripulacion, string funcion) : Seres(raza, edad, nombre, f, hObs, hArma, hRey){
     this->raza = raza;
     this->edad =edad;
     this->nombre = nombre;

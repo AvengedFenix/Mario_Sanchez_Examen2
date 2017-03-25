@@ -9,14 +9,14 @@ protected:
     string raza;
     int edad;
     string nombre;
-    Fruta f;
+    Fruta* f;
     bool hObs;
     bool hArma;
     bool hRey;
 
 public:
     Seres ();
-    Seres(string, int, string,Fruta,bool,bool,bool);
+    Seres(string, int, string,Fruta*,bool,bool,bool);
     Seres(string, int, string,bool,bool,bool);
     void setRaza(string);
     string getRaza();
@@ -24,13 +24,13 @@ public:
     int getEdad();
     void setNombre(string);
     string getNombre();
-    void setF(Fruta);
-    Fruta getF();
+    void setF(Fruta*);
+    Fruta* getF();
     void setHObs(bool);
     bool getHObs();
     void setHArma(bool);
     bool getHArma();
     void setHRey(bool);
     bool getHRey();
-    ~Seres();
+    virtual ~Seres();
 };

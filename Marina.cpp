@@ -5,7 +5,7 @@ Marina::Marina(){
 }
 
 
-Marina::Marina(string raza, int edad, string nombre ,Fruta f ,bool hObs,bool hArma, bool hRey ,string fecha, string rango) : Seres(raza, edad, nombre, f, hObs, hArma, hRey){
+Marina::Marina(string raza, int edad, string nombre ,Fruta* f ,bool hObs,bool hArma, bool hRey ,string fecha, string rango) : Seres(raza, edad, nombre, f, hObs, hArma, hRey){
     this->raza = raza;
     this->edad =edad;
     this->nombre = nombre;

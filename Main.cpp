@@ -9,24 +9,36 @@
 #include <vector>
 #include <sstream>
 #include <typeinfo>
+#include <iostream>
+#include <fstream>
+#include <sys/stat.h>
+#include <cstdlib>
+#include <cstdarg>
+#include <cstring>
 
 using namespace std;
 
+void agregar(vector<Seres*>, vector<Fruta*>);
+void crearLogSeres(Seres*);
+
 int main(int argc, char const *argv[]) {
     std::vector<Seres*> s;
-    std::vector<Frutas*> f;
+    std::vector<Fruta*> f;
     char resp ='s';
-    while (resp == 's' || resp 'S') {
-        agregar();
+    while (resp == 's' || resp == 'S') {
+        agregar(s, f);
+        std::cout << "Quiere seguir agregando? S/N" << endl;
+        std::cin >> resp;
     }
     return 0;
 }
 
-vector agregar(vector<Seres*> s, vector<Frutas*> f) {
-    //string raza;
+void agregar(vector<Seres*> &s, vector<Fruta*> &f) {
+    int pos;
+    string raza;
     int edad;
     string nombre;
-    Fruta fruta;
+    Fruta* fruta;
     bool hObs;
     bool hArma;
     bool hRey;
@@ -54,7 +66,7 @@ vector agregar(vector<Seres*> s, vector<Frutas*> f) {
                     for (int i = 0; i < f.size(); i++) {
                         std::cout << i<<". " << f[i]->getNombre()<<endl;
                     }// fin for
-                    int pos;
+
                     std::cin >> pos;
                     fruta = f[pos];
                 }//fin else
@@ -90,11 +102,12 @@ vector agregar(vector<Seres*> s, vector<Frutas*> f) {
                     std::cin >> fecha;
                     std::cout << "Rango" << endl;
                     std::cin >> rango;
+                    raza = "Marina";
                     if (fs == 's' || fs == 'S') {
-                        s.push_back(new Marina("Marina",edad,nombre,fruta,hObs,hArma,hRey,fecha,rango));
-                        f[pos].erase(f.begin() + pos);
+                        s.push_back(new Marina(raza,edad,nombre,fruta,hObs,hArma,hRey,fecha,rango));
+                        f.erase(f.begin() + pos);
                     } else{
-                        s.push_back(new Marina("Marina",edad,nombre,hObs,hArma,hRey,fecha,rango));
+                        s.push_back(new Marina(raza,edad,nombre,hObs,hArma,hRey,fecha,rango));
                     }
                     break;
                 }// fin case 1.1
@@ -108,27 +121,29 @@ vector agregar(vector<Seres*> s, vector<Frutas*> f) {
                     std::cin >> tripulacion;
                     std::cout << "Funcion" << endl;
                     std::cin >> funcion;
+                    raza = "Piratas";
                     if (fs == 's' || fs == 'S') {
-                        s.push_back(new Marina("Piratas",edad,nombre,fruta,hObs,hArma,hRey,oceano,tripulacion,funcion));
+                        s.push_back(new Piratas(raza,edad,nombre,fruta,hObs,hArma,hRey,oceano,tripulacion,funcion));
                     } else{
-                        s.push_back(new Marina("Piratas",edad,nombre,hObs,hArma,hRey,oceano,tripulacion,funcion));
+                        s.push_back(new Piratas(raza,edad,nombre,hObs,hArma,hRey,oceano,tripulacion,funcion));
                     }
                     break;
                 }// fin case 1.2
                 case 3:{
                     string fecha;
                     std::cout << "Fecha" << endl;
-                    std::cin >> Fecha;
+                    std::cin >> fecha;
+                    raza = "Revolucionarios";
                     if (fs == 's' || fs == 'S') {
-                        s.push_back(new Marina("Revolucionarios",edad,nombre,fruta,hObs,hArma,hRey,fecha));
+                        s.push_back(new Revolucionarios(raza,edad,nombre,fruta,hObs,hArma,hRey,fecha));
                     } else{
-                        s.push_back(new Marina("Revolucionarios",edad,nombre,hObs,hArma,hRey,fecha));
+                        s.push_back(new Revolucionarios(raza,edad,nombre,hObs,hArma,hRey,fecha));
                     }
                     break;
                 }//fin case 1.3
             }//fin switch 1.1
-            crearLogSeres(*s.back())
-            return s;
+            crearLogSeres(s.back());
+            //return s;
             break;
         }//fin case 1
         case 2:{
@@ -141,7 +156,7 @@ vector agregar(vector<Seres*> s, vector<Frutas*> f) {
                     string descripcion;
                     std::cout << "descripcion" << endl;
                     std::cin >> descripcion;
-                    f.push_back(new Parmecia(nombre, descripcion));
+                    f.push_back(new Paramecia(nombre, descripcion));
                     break;
                 }//fin case 2.1
                 case 2:{
@@ -151,7 +166,7 @@ vector agregar(vector<Seres*> s, vector<Frutas*> f) {
                     std::cin >> tipo;
                     std::cout << "animal" << endl;
                     std::cin >> animal;
-                    f.push_back(new Parmecia(nombre,tipo,animal));
+                    f.push_back(new Zoan(nombre,tipo,animal));
                     break;
                 }//fin case 2.2
                 case 3:{
@@ -160,43 +175,44 @@ vector agregar(vector<Seres*> s, vector<Frutas*> f) {
                     break;
                 }// fin case 2.3
             }//fin switch 2.1
-            return f;
+            //return f;
             break;
         }//fin case 2
     }//fin switch
+
 }// fin funcio agregar
 
 void crearLogSeres(Seres* ser){
   ofstream outfile;
   char filename[256] = {0};
-  t
-  try{
+
+ /* try{
     const int directorio = system("mkdir -p ./Usuarios_log");//-p es para crear directorio solo si no existe
   } catch (...) {
 
-  }
+  }*/
 
   strcpy(filename, "./Usuarios_log/nombre.log");
   stringstream ss;
   stringstream ss2;
 
-  if (typeid(ser -> getFruta()).name() == typeid(Parmecia).name()) {
-      ss2 << " Nombre Fruta: " << ser -> getFruta() -> getNombre() << " Descripcion: " << ser -> getFruta() -> getDescripcion();
-  } else if (typeid(ser -> getFruta()).name() == typeid(Logia).name()) {
-      ss2 << " Nombre Fruta: " << ser -> getFruta() -> getNombre() << " Elemento: " << ser -> getFruta() -> getElemento();
-  } else if (typeid(ser -> getFruta()).name() == typeid(Logia).name()) {
-      ss2 << " Nombre Fruta: " << ser -> getFruta() -> getNombre() << " Tipo: " << ser -> getFruta() -> getTipo() << " Animal: " << ser -> getFruta() -> getAnimal();
+  if (typeid(ser    -> getF()).name() == typeid(Paramecia).name()) {
+      ss2 << " Nombre Fruta: " << ser -> getF() -> getNombre() << " Descripcion: "; /*<< ser -> getF() -> getDescripcion();*/
+  } else if (typeid(ser -> getF()).name() == typeid(Logia).name()) {
+      ss2 << " Nombre Fruta: " << ser -> getF() -> getNombre() << " Elemento: "; /*<< ser -> getF() -> getElemento();*/
+  } else if (typeid(ser -> getF()).name() == typeid(Logia).name()) {
+      ss2 << " Nombre Fruta: " << ser -> getF() -> getNombre() << " Tipo: "; /*<< ser -> getF() -> getTipo() << " Animal: " << ser -> getF() -> getAnimal();*/
   }
 
-  if (s -> getRaza() == "Marina") {
-      ss << "Raza: " << s -> getRaza() << " Edad: " << s -> getEdad() << " Nombre: "
-      << ser-> getNombre() << " Fruta " << ss2.str() << " Haki Obs " << ser -> getHObs() << " Haki Armadu " << ser -> getHArma() << " Haki  del Rey: " << ser ->getHRey() << " Fecha Ingreso: " << ser ->getFecha() << " Rango: "<< ser->getRango();
-  } else if (s -> getRaza() == "Piratas") {
-      ss << "Raza: " << s -> getRaza() << " Edad: " << s -> getEdad() << " Nombre: "
-      << ser-> getNombre() << " Fruta " << ss2.str() << " Haki Obs " << ser -> getHObs() << " Haki Armadu " << ser -> getHArma() << " Haki  del Rey: " << ser ->getHRey() << " Oceano: " << ser ->getOceano() << " Tripulacion: "<< ser->getTripulacion() << " Funcion: " << ser ->getFuncion();
-  } else if ( -> getRaza() == "Revolucionarios")) {
-      ss << "Raza: " << s -> getRaza() << " Edad: " << s -> getEdad() << " Nombre: "
-      << ser-> getNombre() << " Fruta " << ss2.str() << " Haki Obs " << ser -> getHObs() << " Haki Armadu " << ser -> getHArma() << " Haki  del Rey: " << ser ->getHRey() << " Fecha Ingreso: " << ser ->getFecha();
+  if (ser -> getRaza() == "Marina") {
+      ss << "Raza: " << ser -> getRaza() << " Edad: " << ser -> getEdad() << " Nombre: "
+      << ser-> getNombre() << " Fruta " << ss2.str() << " Haki Obs " << ser -> getHObs() << " Haki Armadu " << ser -> getHArma() << " Haki  del Rey: " << ser ->getHRey() << " Fecha Ingreso: "; /*<< ser ->getFecha() << " Rango: "<< ser->getRango();*/
+  } else if (ser -> getRaza() == "Piratas") {
+      ss << "Raza: " << ser -> getRaza() << " Edad: " << ser -> getEdad() << " Nombre: "
+      << ser-> getNombre() << " Fruta " << ss2.str() << " Haki Obs " << ser -> getHObs() << " Haki Armadu " << ser -> getHArma() << " Haki  del Rey: " << ser ->getHRey() << " Oceano: ";  /*<< ser ->getOceano() << " Tripulacion: "<< ser->getTripulacion() << " Funcion: " << ser ->getFuncion();*/
+  } else if ( ser -> getRaza() == "Revolucionarios") {
+      ss << "Raza: " << ser -> getRaza() << " Edad: " << ser -> getEdad() << " Nombre: "
+      << ser-> getNombre() << " Fruta " << ss2.str() << " Haki Obs " << ser -> getHObs() << " Haki Armadu " << ser -> getHArma() << " Haki  del Rey: " << ser ->getHRey() << " Fecha Ingreso: "; /*<< ser ->getFecha();*/
   }
 
 

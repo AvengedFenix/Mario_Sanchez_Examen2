@@ -5,7 +5,7 @@ Revolucionarios::Revolucionarios(){
 }
 
 
-Revolucionarios::Revolucionarios(string raza, int edad, string nombre ,Fruta f ,bool hObs,bool hArma, bool hRey ,string fecha) : Seres(raza, edad, nombre, f, hObs, hArma, hRey){
+Revolucionarios::Revolucionarios(string raza, int edad, string nombre ,Fruta* f ,bool hObs,bool hArma, bool hRey ,string fecha) : Seres(raza, edad, nombre, f, hObs, hArma, hRey){
     this->raza = raza;
     this->edad =edad;
     this->nombre = nombre;
